@@ -2,6 +2,11 @@
 
 ### Network & Network Security Engineer — multi-vendor infrastructure, automation, and the lab I break things in
 
+> **Built in public, and still building.** This page, the
+> [lab hub](https://github.com/117caseyallen-NetAdm/casey-lab), and every project
+> repo are living documents — updated as the environment grows, not written once
+> and abandoned. The commit histories are the changelog.
+
 I run a **dual-site enterprise network on real hardware** — no GNS3, no EVE-NG — and
 document it publicly as I build. Two firewalled sites joined into a single OSPF
 routing domain across an IPsec tunnel, with separated data and management planes,
@@ -36,6 +41,10 @@ Juniper Junos, Arista EOS — plus Proxmox VE and Debian on the compute side.
 
 > Every repo ships with the debugging story, not just the working config. The
 > four hours where it *didn't* work are the part worth reading.
+>
+> Each project links back to the [hub](https://github.com/117caseyallen-NetAdm/casey-lab),
+> and the hub carries the topology every project plugs into — so you can start
+> anywhere and find your way around.
 
 ## 🛠️ Working with
 
