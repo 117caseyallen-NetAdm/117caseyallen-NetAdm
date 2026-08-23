@@ -19,7 +19,7 @@ debugged, and documented end to end.
 
 ## 🔬 The Lab
 
-![CASEY-LAB Topology](https://raw.githubusercontent.com/117caseyallen-NetAdm/casey-lab/main/topology/CA-LAB-Topo.svg)
+![CASEY-LAB Topology](topology/CA-LAB-Topo.svg)
 
 **Four network operating systems in one fabric:** Palo Alto PAN-OS, Cisco IOS,
 Juniper Junos, Arista EOS — plus Proxmox VE and Debian on the compute side.
