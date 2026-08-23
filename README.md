@@ -12,9 +12,8 @@ document it publicly as I build. Two firewalled sites joined into a single OSPF
 routing domain across an IPsec tunnel, with separated data and management planes,
 aggregated uplinks, and a services layer that grows every month.
 
-Everything here is homelab work, built and broken by me. Currently in IT systems
-administration on launch infrastructure, moving into network engineering full time.
-Based in Los Angeles, relocating to the **San Francisco Bay Area**.
+Everything here is homelab work, built and broken by me — designed, configured,
+debugged, and documented end to end.
 
 ---
 
@@ -76,5 +75,4 @@ Each phase ships as its own documented repo.
 
 ## 📫 Connect
 
-[LinkedIn](https://www.linkedin.com/in/casey-allen-6612a7133) · Open to Network
-Engineer / Network Security Engineer roles in the SF Bay Area
+[LinkedIn](https://www.linkedin.com/in/casey-allen-6612a7133)
