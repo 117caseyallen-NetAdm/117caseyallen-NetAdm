@@ -24,6 +24,15 @@ debugged, and documented end to end.
 **Four network operating systems in one fabric:** Palo Alto PAN-OS, Cisco IOS,
 Juniper Junos, Arista EOS — plus Proxmox VE and Debian on the compute side.
 
+### And the actual metal
+
+| | |
+|:--:|:--:|
+| ![Lab rack](photos/lab-rack-wide.jpg) | ![Lab rack detail](photos/lab-rack-detail.jpg) |
+
+No GNS3, no EVE-NG, no cloud instances pretending to be switches. Every device
+in the diagram above is a physical box — on a shelf I built.
+
 | | |
 |---|---|
 | **Routing** | Flat OSPF area 0 unified across a route-based IKEv2 IPsec tunnel (PA-440 ⇄ SRX345); firewalls inject defaults as Type-5 LSAs |
