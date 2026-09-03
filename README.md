@@ -1,87 +1,63 @@
 # Casey Allen
 
-### Network & Network Security Engineer — multi-vendor infrastructure, automation, and the lab I break things in
+### Network & Network Security Engineer — multi-vendor infrastructure and automation
 
-> **Built in public, and still building.** This page, the
-> [lab hub](https://github.com/117caseyallen-NetAdm/casey-lab), and every project
-> repo are living documents — updated as the environment grows, not written once
-> and abandoned. The commit histories are the changelog.
+I work in IT systems administration on production infrastructure. This lab is
+where I build and break the network engineering side of it: a dual-site
+enterprise network on physical hardware, four network operating systems, joined
+by a site-to-site IPsec tunnel into a single OSPF routing domain.
 
-I run a **dual-site enterprise network on real hardware** — no GNS3, no EVE-NG — and
-document it publicly as I build. Two firewalled sites joined into a single OSPF
-routing domain across an IPsec tunnel, with separated data and management planes,
-aggregated uplinks, and a services layer that grows every month.
+Everything below is homelab work, designed, configured, debugged, and documented
+by me.
 
-Everything here is homelab work, built and broken by me — designed, configured,
-debugged, and documented end to end.
+## Projects
 
----
+| Repo | What it is |
+|---|---|
+| **[casey-lab](https://github.com/117caseyallen-NetAdm/casey-lab)** | The hub. Topology, fabric reference, and write-ups. Start here. |
+| **[homelab-domain-services](https://github.com/117caseyallen-NetAdm/homelab-domain-services)** | AD DS, DNS, and DHCP. A single DHCP server addressing a remote subnet across OSPF and an IPsec tunnel, plus cross-site domain join. |
+| **[homelab-wireguard](https://github.com/117caseyallen-NetAdm/homelab-wireguard)** | Routed, non-NATed WireGuard VPN. The client pool is redistributed into OSPF so it is reachable fleet-wide. |
 
-## 🔬 The Lab
+Each repo documents what broke and why, not just the working config.
+
+## The lab
 
 ![CASEY-LAB Topology](topology/CA-LAB-Topo.svg)
 
-**Four network operating systems in one fabric:** Palo Alto PAN-OS, Cisco IOS,
-Juniper Junos, Arista EOS — plus Proxmox VE and Debian on the compute side.
+| | |
+|---|---|
+| **Routing** | Flat OSPF area 0 across a route-based IKEv2 IPsec tunnel (PA-440 ⇄ SRX345). Both firewalls inject default routes as Type-5 LSAs. |
+| **Aggregation** | LACP between the SRX, distribution switches, and the Arista. Static EtherChannel to the Catalyst 2940, whose IOS image has no LACP support. |
+| **Addressing** | Separate ranges for data, management (`10.99.x.x`), and transit (`10.255.x.x`). |
+| **Access** | Dual-homed jumpboxes per site. Management access to network devices restricted to those jumpboxes and the management plane, enforced across four vendors. |
 
-### And the actual metal
+Physical hardware, not GNS3 or EVE-NG:
 
 | | |
 |:--:|:--:|
 | ![Lab rack](photos/lab-rack-wide.jpg) | ![Lab rack detail](photos/lab-rack-detail.jpg) |
 
-No GNS3, no EVE-NG, no cloud instances pretending to be switches. Every device
-in the diagram above is a physical box — on a shelf I built.
+## Working with
 
-| | |
-|---|---|
-| **Routing** | Flat OSPF area 0 unified across a route-based IKEv2 IPsec tunnel (PA-440 ⇄ SRX345); firewalls inject defaults as Type-5 LSAs |
-| **Aggregation** | LACP where both ends support it, static EtherChannel where the hardware predates it — capability-matched, not copy-pasted |
-| **Addressing** | Deliberate plan: data / management / transit planes on separate ranges, consistent fleet-wide |
-| **Access** | Dual-homed jumpboxes per site, redundant trunked access switching, routed remote-access VPN |
+**Network** — Palo Alto PAN-OS · Cisco IOS · Juniper Junos · Arista EOS
+**Routing & switching** — OSPF · IKEv2 IPsec · 802.1Q · LACP / EtherChannel · VLAN and SVI design · WireGuard
+**Platform** — Proxmox VE · LXC · Windows Server · Active Directory · DNS · DHCP · Linux
+**Scripting** — PowerShell · Bash · Git
 
-## 📦 Projects
-
-| Repo | What it is |
-|---|---|
-| **[casey-lab](https://github.com/117caseyallen-NetAdm/casey-lab)** | The hub — living topology diagram, fabric overview, and the full build roadmap. Start here. |
-| **[homelab-wireguard](https://github.com/117caseyallen-NetAdm/homelab-wireguard)** | Routed (non-NATed) WireGuard remote-access VPN. Client pool redistributed into OSPF for fleet-wide reachability across the IPsec tunnel. Build notes + a real troubleshooting log. |
-
-> Every repo ships with the debugging story, not just the working config. The
-> four hours where it *didn't* work are the part worth reading.
->
-> Each project links back to the [hub](https://github.com/117caseyallen-NetAdm/casey-lab),
-> and the hub carries the topology every project plugs into — so you can start
-> anywhere and find your way around.
-
-## 🛠️ Working with
-
-**Network** — Palo Alto PAN-OS · Cisco IOS · Juniper Junos & SRX · Arista EOS · Juniper Mist · Fortinet
-**Routing & switching** — OSPF · IPsec (IKEv2) · 802.1Q · LACP / EtherChannel · VLAN & SVI design · WireGuard
-**Platform** — Proxmox VE · VMware vSphere/ESXi · LXC · Windows Server · Active Directory · Linux
-**Cloud & security** — AWS · Azure · GCP · Splunk · Microsoft Sentinel · CrowdStrike · Nessus · Okta
-**Automation** — Python · PowerShell · Git · Ansible *(Batfish, Suzieq, Nornir/NAPALM in progress)*
-
-## 📜 Certifications
+## Certifications
 
 `JNCIA-SEC` · `JNCIA-Junos` · `AZ-700 Azure Network Engineer` · `CompTIA Security+` ·
 `CompTIA CySA+` · `CompTIA Network+` · `CompTIA A+` · `ISC2 CC` ·
 `AWS Cloud Practitioner` · `Splunk Core Certified User`
 
-**In progress:** CCNA
+In progress: **CCNA**
 
-## 🗺️ What's next in the lab
+## Next
 
-Building toward a complete, automated enterprise environment:
+Config backup and version control (Oxidized), centralized AAA, 802.1X, and a
+NetDevOps pipeline with Batfish validation. Detail in the
+[hub roadmap](https://github.com/117caseyallen-NetAdm/casey-lab#roadmap).
 
-1. **Platform** — Proxmox cluster, quorum device, backup server
-2. **Identity & core services** — AD DS / DNS / DHCP, internal PKI, 802.1X wired auth via RADIUS across all four switch vendors
-3. **Network operations** — Oxidized config backup → self-hosted Git, NetBox as source of truth, LibreNMS, centralized syslog
-4. **Security operations** — SIEM, Suricata IDS on a mirrored port, per-client VPN policy, guest/IoT segmentation
-5. **NetDevOps** — Batfish snapshot validation + Suzieq runtime state in a CI pipeline: config change → PR → behavioral diff → automated deploy → post-change validation
-
-Each phase ships as its own documented repo.
-
-## 📫 Connect
+## Connect
 
 [LinkedIn](https://www.linkedin.com/in/casey-allen-6612a7133)
