@@ -22,7 +22,7 @@ Each repo documents what broke and why, not just the working config.
 
 ## The lab
 
-![CASEY-LAB Topology](topology/CA-LAB-Topo.svg)
+![CASEY-LAB Topology](topology/CA-LAB-Topo.png)
 
 | | |
 |---|---|
