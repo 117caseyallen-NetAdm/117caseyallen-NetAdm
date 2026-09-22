@@ -2,10 +2,9 @@
 
 ### Multi-vendor network lab — routing, security, and automation on physical hardware
 
-I work in IT systems administration on production infrastructure. This lab is the
-network engineering side of it: two firewalled sites on physical hardware, four
-network operating systems, joined by a route-based IKEv2 IPsec tunnel into one
-OSPF area.
+Network engineering and administration projects, designed, built and run on
+physical hardware at home: two firewalled sites, four network operating systems,
+joined by a route-based IKEv2 IPsec tunnel into one OSPF area.
 
 Both sites share one shelf and one internet uplink — the tunnel runs between the
 firewalls' outside interfaces across the home router's LAN, which stands in for a
